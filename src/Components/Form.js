@@ -2,7 +2,7 @@
  * @Author: Ali
  * @Date:   2018-05-18T13:13:17+02:00
  * @Last modified by:   Ali
- * @Last modified time: 2018-05-20T20:08:04+02:00
+ * @Last modified time: 2018-05-20T23:14:36+02:00
  */
 import React, { Component } from 'react'
 import {Button,Input,Modal } from 'react-materialize'
@@ -18,6 +18,7 @@ export default class Form extends Component {
     return (
       <div className="form-inline">
         <Modal
+          id='inputModal'
           header='Add New Note'
           trigger={<Button floating large className='red' waves='light' icon='add' />}>
           <form onSubmit={this.props.handleSubmit}>
@@ -37,7 +38,10 @@ export default class Form extends Component {
               value={this.props.currentDetails}
               onChange={this.props.handleChange}
             />
-            <Button type='submit' onClick={() =>{ }}>Save</Button>
+            <Button className="btn waves-effect waves-yellow btn-flat modal-action modal-close"
+              type='submit'>
+              Save
+            </Button>
           </form>
         </Modal>
       </div>
