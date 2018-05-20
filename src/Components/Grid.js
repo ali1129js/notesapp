@@ -2,7 +2,7 @@
  * @Author: Ali
  * @Date:   2018-05-18T13:13:25+02:00
  * @Last modified by:   Ali
- * @Last modified time: 2018-05-20T17:19:53+02:00
+ * @Last modified time: 2018-05-20T20:08:37+02:00
  */
 import React, { Component } from 'react'
 import {Col, Row} from 'react-materialize'
@@ -20,8 +20,7 @@ export default class Grid extends Component {
   render() {
     return (
       <Row>
-        <Col> {this.renderItems()} </Col>
-
+        <Col>{this.renderItems()}</Col>
       </Row>
       )
   }

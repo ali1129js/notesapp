@@ -2,10 +2,10 @@
  * @Author: Ali
  * @Date:   2018-05-18T13:13:17+02:00
  * @Last modified by:   Ali
- * @Last modified time: 2018-05-20T19:55:31+02:00
+ * @Last modified time: 2018-05-20T20:08:04+02:00
  */
 import React, { Component } from 'react'
-import {Button,Input,Row,Modal } from 'react-materialize'
+import {Button,Input,Modal } from 'react-materialize'
 
 export default class Form extends Component {
   handleChange(e){
@@ -17,27 +17,6 @@ export default class Form extends Component {
   render() {
     return (
       <div className="form-inline">
-        <Row>
-          <form onSubmit={this.props.handleSubmit}>
-            <Input
-              s={6}
-              label="New Title"
-              name="currentTitle"
-              type="text"
-              value={this.props.currentTitle}
-              onChange={this.props.handleChange}
-            />
-            <Input
-              s={6}
-              label="New Note"
-              name="currentDetails"
-              type='textarea'
-              value={this.props.currentDetails}
-              onChange={this.props.handleChange}
-            />
-            <Button floating large className='red' waves='light' icon='add' />
-          </form>
-        </Row>
         <Modal
           header='Add New Note'
           trigger={<Button floating large className='red' waves='light' icon='add' />}>
@@ -58,7 +37,7 @@ export default class Form extends Component {
               value={this.props.currentDetails}
               onChange={this.props.handleChange}
             />
-            <Button type='submit'>save</Button>
+            <Button type='submit' onClick={() =>{ }}>Save</Button>
           </form>
         </Modal>
       </div>
