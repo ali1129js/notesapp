@@ -2,7 +2,7 @@
  * @Author: Ali
  * @Date:   2018-05-17T17:18:03+02:00
  * @Last modified by:   Ali
- * @Last modified time: 2018-05-20T12:03:11+02:00
+ * @Last modified time: 2018-05-20T12:21:56+02:00
  */
 import React, { Component } from 'react'
 import firebase from 'firebase/app';
@@ -10,12 +10,7 @@ import 'firebase/database';
 import _ from 'lodash'
 import Grid from './Components/Grid'
 import Form from './Components/Form'
-import './App.css'
-const styles = {
-  textAlign:'center',
-  margin:0,
-  padding:0
-}
+
 class App extends Component {
 constructor(){
   super()
@@ -61,8 +56,10 @@ constructor(){
     e.preventDefault()
     console.log('submit')
     const data = {
-      title:this.state.currentTitle
+      title:this.state.currentTitle,
+      details:this.state.currentDetails
     }
+    firebase.database().ref('/notes').push(data)
   }
   render() {
     return (
