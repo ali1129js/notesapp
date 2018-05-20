@@ -2,9 +2,12 @@
  * @Author: Ali
  * @Date:   2018-05-17T17:18:03+02:00
  * @Last modified by:   Ali
- * @Last modified time: 2018-05-20T11:34:07+02:00
+ * @Last modified time: 2018-05-20T12:03:11+02:00
  */
 import React, { Component } from 'react'
+import firebase from 'firebase/app';
+import 'firebase/database';
+import _ from 'lodash'
 import Grid from './Components/Grid'
 import Form from './Components/Form'
 import './App.css'
@@ -17,35 +20,35 @@ class App extends Component {
 constructor(){
   super()
   this.state = {
-    notes: [
-      {
-      id:1,
-      title:'note1',
-      details:'....note1'},
-      {
-      id:2,
-      title:'note2',
-      details:'....note2'},
-      {
-      id:3,
-      title:'note3',
-      details:'....note3'}
-    ],
+    notes: [],
     name:'Al',
     currentTitle:'',
     currentDetails:''
   }
 }
   componentDidMount(){
-    const config = {
-    apiKey: "AIzaSyCHDXe2kFe5ArTbhj-h_2KuoMOhqD6TRmQ",
-    authDomain: "noteapp-6e899.firebaseapp.com",
-    databaseURL: "https://noteapp-6e899.firebaseio.com",
-    projectId: "noteapp-6e899",
-    storageBucket: "",
-    messagingSenderId: "997200143821"
-  };
-  firebase.initializeApp(config);
+  firebase.initializeApp({
+  apiKey: "AIzaSyCHDXe2kFe5ArTbhj-h_2KuoMOhqD6TRmQ",
+  authDomain: "noteapp-6e899.firebaseapp.com",
+  databaseURL: "https://noteapp-6e899.firebaseio.com",
+  projectId: "noteapp-6e899",
+  storageBucket: "",
+  messagingSenderId: "997200143821"
+  });
+    console.log('Firebase success')
+    firebase.database().ref('/notes')
+    .on('value', snapshot => {
+      const fbstore = snapshot.val()
+      const store = _.map(fbstore, (value,id) => {
+        return {
+          id:id,
+          title:value.title,
+          details: value.details}
+        })
+      this.setState({
+        notes:store,
+      })
+    })
   }
   handleChange(e) {
     const name= e.target.name
