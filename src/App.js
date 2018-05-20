@@ -2,7 +2,7 @@
  * @Author: Ali
  * @Date:   2018-05-17T17:18:03+02:00
  * @Last modified by:   Ali
- * @Last modified time: 2018-05-20T12:21:56+02:00
+ * @Last modified time: 2018-05-20T12:26:33+02:00
  */
 import React, { Component } from 'react'
 import firebase from 'firebase/app';
@@ -30,7 +30,7 @@ constructor(){
   storageBucket: "",
   messagingSenderId: "997200143821"
   });
-    console.log('Firebase success')
+    console.log('Firebase connected successfully')
     firebase.database().ref('/notes')
     .on('value', snapshot => {
       const fbstore = snapshot.val()
@@ -54,12 +54,16 @@ constructor(){
   }
   handleSubmit(e){
     e.preventDefault()
-    console.log('submit')
+    console.log('Form is submitted successfully')
     const data = {
       title:this.state.currentTitle,
       details:this.state.currentDetails
     }
-    firebase.database().ref('/notes').push(data)
+    firebase.database().ref('/notes').push(data, res => res)
+    this.setState({
+    currentTitle:'',
+    currentDetails:''
+    })
   }
   render() {
     return (
