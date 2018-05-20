@@ -2,7 +2,7 @@
  * @Author: Ali
  * @Date:   2018-05-17T17:18:03+02:00
  * @Last modified by:   Ali
- * @Last modified time: 2018-05-20T12:31:52+02:00
+ * @Last modified time: 2018-05-20T16:42:57+02:00
  */
 import React, { Component } from 'react'
 import firebase from 'firebase/app';
@@ -68,7 +68,7 @@ constructor(){
   }
   render() {
     return (
-      <div className="App">
+      <div className="container">
       <Header name={this.state.name}/>
         <Form
           currentTitle={this.state.currentTitle}

@@ -2,9 +2,10 @@
  * @Author: Ali
  * @Date:   2018-05-18T13:13:17+02:00
  * @Last modified by:   Ali
- * @Last modified time: 2018-05-18T14:05:52+02:00
+ * @Last modified time: 2018-05-20T16:43:22+02:00
  */
 import React, { Component } from 'react'
+import {Button} from 'react-materialize'
 export default class Form extends Component {
   handleChange(e){
     this.props.handleChange(e)
@@ -29,7 +30,7 @@ export default class Form extends Component {
           value={this.props.currentDetails}
           onChange={this.props.handleChange}
         />
-        <button type='submit'> Add note </button>
+        <Button floating large className='red' waves='light' icon='add' />
       </form>
     )
   }
