@@ -2,7 +2,7 @@
  * @Author: Ali
  * @Date:   2018-05-17T17:18:03+02:00
  * @Last modified by:   Ali
- * @Last modified time: 2018-05-18T22:01:28+02:00
+ * @Last modified time: 2018-05-20T11:34:07+02:00
  */
 import React, { Component } from 'react'
 import Grid from './Components/Grid'
@@ -36,6 +36,17 @@ constructor(){
     currentDetails:''
   }
 }
+  componentDidMount(){
+    const config = {
+    apiKey: "AIzaSyCHDXe2kFe5ArTbhj-h_2KuoMOhqD6TRmQ",
+    authDomain: "noteapp-6e899.firebaseapp.com",
+    databaseURL: "https://noteapp-6e899.firebaseio.com",
+    projectId: "noteapp-6e899",
+    storageBucket: "",
+    messagingSenderId: "997200143821"
+  };
+  firebase.initializeApp(config);
+  }
   handleChange(e) {
     const name= e.target.name
     const value = e.target.value
@@ -45,6 +56,7 @@ constructor(){
   }
   handleSubmit(e){
     e.preventDefault()
+    console.log('submit')
     const data = {
       title:this.state.currentTitle
     }
@@ -58,7 +70,7 @@ constructor(){
           handleChange={this.handleChange.bind(this)}
           handleSubmit={this.handleSubmit.bind(this)}
         />
-        <Grid notes={this.state.notes}/>
+        <Grid notes={this.state.notes} />
       </div>
     )
   }
