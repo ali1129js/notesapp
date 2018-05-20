@@ -2,12 +2,13 @@
  * @Author: Ali
  * @Date:   2018-05-17T17:18:03+02:00
  * @Last modified by:   Ali
- * @Last modified time: 2018-05-20T12:26:33+02:00
+ * @Last modified time: 2018-05-20T12:31:52+02:00
  */
 import React, { Component } from 'react'
 import firebase from 'firebase/app';
 import 'firebase/database';
 import _ from 'lodash'
+import Header from './Components/Header'
 import Grid from './Components/Grid'
 import Form from './Components/Form'
 
@@ -68,6 +69,7 @@ constructor(){
   render() {
     return (
       <div className="App">
+      <Header name={this.state.name}/>
         <Form
           currentTitle={this.state.currentTitle}
           currentDetails={this.state.currentDetails}
