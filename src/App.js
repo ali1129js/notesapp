@@ -2,7 +2,7 @@
  * @Author: Ali
  * @Date:   2018-05-17T17:18:03+02:00
  * @Last modified by:   Ali
- * @Last modified time: 2018-05-20T16:42:57+02:00
+ * @Last modified time: 2018-05-21T09:05:15+02:00
  */
 import React, { Component } from 'react'
 import firebase from 'firebase/app';
@@ -66,6 +66,9 @@ constructor(){
     currentDetails:''
     })
   }
+  deleteNote(id){
+    firebase.database().ref(`/notes/${id}`).remove()
+  }
   render() {
     return (
       <div className="container">
@@ -76,7 +79,10 @@ constructor(){
           handleChange={this.handleChange.bind(this)}
           handleSubmit={this.handleSubmit.bind(this)}
         />
-        <Grid notes={this.state.notes} />
+        <Grid
+          notes={this.state.notes}
+          deleteNote={this.deleteNote.bind(this)}
+         />
       </div>
     )
   }
